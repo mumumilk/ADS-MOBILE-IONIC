@@ -1,0 +1,50 @@
+<ion-header >
+
+  <ion-navbar color="light">
+    <ion-title>
+      Page Uno
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <p *ngIf="txxt.length < 5">Informe 5 caracteres</p>
+      <ion-item>
+          <ion-label floating>Digite a frase</ion-label>
+          <ion-input type="text" [(ngModel)]="txxt"></ion-input>
+      </ion-item>
+
+    <ion-item>
+      <div style="border: 3px solid black" id="borda">
+        <button ion-button round (click)="mudarCor('blue')" color="primary" >Azul</button>
+        <button ion-button round (click)="mudarCor('green')" color="secondary">Verde</button>
+        <button ion-button round (click)="mudarCor('red')" color="danger">Vermelho</button>
+      </div>
+    </ion-item>
+
+    <ion-item>
+        <ion-card>
+            <ion-list>
+                <ion-item>
+                  <ion-avatar item-left>
+                      <img src="https://vakinha-site.s3.amazonaws.com/uploads/vakinha/image/26571/cover_Pai_de_familia.jpg"/>
+                  </ion-avatar>
+                  <h2>Family Father</h2>
+                  <p>This guy is a dick</p>
+                </ion-item>
+                <ion-item text-wrap>
+                  <p>Do you have what it takes to bring down this huge dude?</p>
+                </ion-item>
+                <ion-item>
+                    <button ion-button outline color="primary" block>CALL ME!</button>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
