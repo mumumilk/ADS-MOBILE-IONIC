@@ -6,6 +6,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DisciplinePage } from '../pages/discipline/discipline';
 import { TaskPage } from '../pages/task/task';
 import { UnoPage } from '../pages/uno/uno';
+import { MenuPage } from '../pages/menu/menu';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { UnoPage } from '../pages/uno/uno';
     TabsPage,
     DisciplinePage,
     TaskPage,
-    UnoPage
+    UnoPage,
+    MenuPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -26,7 +28,8 @@ import { UnoPage } from '../pages/uno/uno';
     TabsPage,
     DisciplinePage,
     TaskPage,
-    UnoPage
+    UnoPage,
+    MenuPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

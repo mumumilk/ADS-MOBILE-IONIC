@@ -1,0 +1,21 @@
+<ion-menu [content]="pages">
+
+    <ion-header>
+        <ion-navbar color="dark">
+            <ion-title>
+                Menu
+            </ion-title>
+        </ion-navbar>
+    </ion-header>
+
+  <ion-content block>
+    <ion-list>
+        <button menuClose ion-item (click)="openPage(lista1)">
+          Lista 1
+        </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #pages [root]="actualPage"></ion-nav>

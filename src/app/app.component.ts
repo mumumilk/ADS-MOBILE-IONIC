@@ -7,13 +7,14 @@ import { TabsPage } from  '../pages/tabs/tabs';
 import { DisciplinePage } from '../pages/discipline/discipline';
 import { TaskPage } from '../pages/task/task';
 import { UnoPage } from '../pages/uno/uno';
+import { MenuPage} from '../pages/menu/menu';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  rootPage = MenuPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
