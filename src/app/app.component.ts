@@ -2,12 +2,17 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { LoginPage } from '../pages/login/login';
+import { MenuPage} from '../pages/menu/menu';
+
 import { TabsPage } from  '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
 import { DisciplinePage } from '../pages/discipline/discipline';
 import { TaskPage } from '../pages/task/task';
 import { UnoPage } from '../pages/uno/uno';
-import { MenuPage} from '../pages/menu/menu';
+
+import { Tabs2Page } from '../pages/tabs2/tabs2';
+import { NetworkPage } from '../pages/network/network';
+
 
 
 @Component({

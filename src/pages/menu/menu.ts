@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 
-import { LoginPage } from '../login/login';
-import { DisciplinePage } from '../discipline/discipline';
+
 import { TabsPage } from '../tabs/tabs';
+import { Tabs2Page } from '../tabs2/tabs2';
 
 /*
   Generated class for the Menu page.
@@ -17,9 +17,8 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class MenuPage {
   public actualPage = TabsPage;
-  public login = LoginPage;
-  public discipline = DisciplinePage;
   public lista1 = TabsPage;
+  public lista2 = Tabs2Page;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
