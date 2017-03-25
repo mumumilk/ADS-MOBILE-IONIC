@@ -12,7 +12,10 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'network.html'
 })
 export class NetworkPage {
-
+  public lst = [
+    "Rico",
+    "Samuka"
+  ];
   constructor() {}
 
 }

@@ -16,7 +16,7 @@ import { Tabs2Page } from '../tabs2/tabs2';
   templateUrl: 'menu.html'
 })
 export class MenuPage {
-  public actualPage = TabsPage;
+  public actualPage = Tabs2Page;
   public lista1 = TabsPage;
   public lista2 = Tabs2Page;
 
