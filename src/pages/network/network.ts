@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the Network page.
@@ -13,9 +13,67 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class NetworkPage {
   public lst = [
-    "Rico",
-    "Samuka"
+    {id: 0, name: 'GVT-FD074', conectado: false, sinal: Sinal.Bom},
+    {id: 1, name: 'Wireless-N', conectado: false, sinal: Sinal.Ruim}
   ];
-  constructor() {}
+  constructor(public alertCtrl: AlertController) {}
 
+  public mostra(netId){
+    let item = this.lst.find(x => x.id == netId);
+
+    let alertConnect = this.alertCtrl.create({
+      title: 'Conectar',
+      subTitle: item.name,
+      buttons: [{
+        text: 'Cancelar',
+        role: 'Cancel'
+      },
+      {
+        text: 'Conectar',
+        handler: data => {
+          for (let i of this.lst) {
+              i.conectado = false;
+          }
+          item.conectado = true;
+        }
+      }],
+      inputs: [{
+        name: 'Senha',
+        placeholder: 'Coloque a senha',
+        type: 'password'
+      }]
+    });
+
+    let alertDisconnect = this.alertCtrl.create({
+      title: 'Desconectar',
+      subTitle: item.name,
+      message: 'Sinal: '+ Sinal[item.sinal],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'Cancel'
+        },
+        {
+          text: 'Desconectar',
+          handler: data => {
+            item.conectado = false;
+          }
+        }
+      ]
+    })
+    if (item.conectado){
+        alertDisconnect.present();
+    }
+    else{
+        alertConnect.present();
+    }
+  }
+
+}
+
+ enum Sinal{
+  Ruim,
+  Medio,
+  Bom,
+  Otimo,
 }
