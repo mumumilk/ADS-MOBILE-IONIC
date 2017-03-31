@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { ModalNetworkPage } from '../modal-network/modal-network';
 
 /*
   Generated class for the Network page.
@@ -16,9 +17,19 @@ export class NetworkPage {
     {id: 0, name: 'GVT-FD074', conectado: false, sinal: Sinal.Bom},
     {id: 1, name: 'Wireless-N', conectado: false, sinal: Sinal.Ruim}
   ];
-  constructor(public alertCtrl: AlertController) {}
+  constructor(public alertCtrl: AlertController, public modalCtrl: ModalController) {}
 
-  public mostra(netId){
+  public mostraModal(netId){
+    let item = this.lst.find(x => x.id == netId);
+
+    let modalInfo = this.modalCtrl.create(ModalNetworkPage, {
+      id: netId
+    });
+
+    modalInfo.present();
+  }
+
+  public mostraAlerta(netId){
     let item = this.lst.find(x => x.id == netId);
 
     let alertConnect = this.alertCtrl.create({
@@ -68,6 +79,8 @@ export class NetworkPage {
         alertConnect.present();
     }
   }
+
+
 
 }
 

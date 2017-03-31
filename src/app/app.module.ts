@@ -12,6 +12,7 @@ import { UnoPage } from '../pages/uno/uno';
 
 import { Tabs2Page } from '../pages/tabs2/tabs2';
 import { NetworkPage } from '../pages/network/network';
+import { ModalNetworkPage } from '../pages/modal-network/modal-network';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NetworkPage } from '../pages/network/network';
     UnoPage,
     MenuPage,
     Tabs2Page,
-    NetworkPage
+    NetworkPage,
+    ModalNetworkPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -38,7 +40,8 @@ import { NetworkPage } from '../pages/network/network';
     UnoPage,
     MenuPage,
     Tabs2Page,
-    NetworkPage
+    NetworkPage,
+    ModalNetworkPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
