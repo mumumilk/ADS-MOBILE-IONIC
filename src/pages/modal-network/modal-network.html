@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>modalNetwork</ion-title>
+    <ion-title>{{name}}</ion-title>
       <ion-buttons end>
           <button icon-button icon-only (click)="fechar()">
               <ion-icon name="close"></ion-icon>
@@ -17,5 +17,6 @@
 
 
 <ion-content padding>
-  <h2>{{id}}</h2>
+  <ion-card padding><h2>Intensidade do sinal: {{signal}}</h2></ion-card>
+
 </ion-content>

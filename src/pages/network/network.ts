@@ -15,7 +15,7 @@ import { ModalNetworkPage } from '../modal-network/modal-network';
 export class NetworkPage {
   public lst = [
     {id: 0, name: 'GVT-FD074', conectado: false, sinal: Sinal.Bom},
-    {id: 1, name: 'Wireless-N', conectado: false, sinal: Sinal.Ruim}
+    {id: 1, name: 'Wireless-N', conectado: false, sinal: Sinal.Medio}
   ];
   constructor(public alertCtrl: AlertController, public modalCtrl: ModalController) {}
 
@@ -23,7 +23,10 @@ export class NetworkPage {
     let item = this.lst.find(x => x.id == netId);
 
     let modalInfo = this.modalCtrl.create(ModalNetworkPage, {
-      id: netId
+      id: netId,
+      name: item.name,
+      signal: Sinal[item.sinal],
+      intensity: item.sinal
     });
 
     modalInfo.present();
