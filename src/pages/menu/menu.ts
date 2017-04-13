@@ -4,7 +4,7 @@ import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
 import { Tabs2Page } from '../tabs2/tabs2';
-
+import { ActivityPage } from '../activity/activity';
 /*
   Generated class for the Menu page.
 
@@ -19,6 +19,7 @@ export class MenuPage {
   public actualPage = Tabs2Page;
   public lista1 = TabsPage;
   public lista2 = Tabs2Page;
+  public lista3 = ActivityPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

@@ -14,7 +14,7 @@ import { Tabs2Page } from '../pages/tabs2/tabs2';
 import { NetworkPage } from '../pages/network/network';
 import { ModalNetworkPage } from '../pages/modal-network/modal-network';
 
-
+import { ActivityPage } from '../pages/activity/activity';
 
 @Component({
   templateUrl: 'app.html'
