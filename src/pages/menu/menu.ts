@@ -16,7 +16,7 @@ import { ActivityPage } from '../activity/activity';
   templateUrl: 'menu.html'
 })
 export class MenuPage {
-  public actualPage = Tabs2Page;
+  public actualPage = ActivityPage;
   public lista1 = TabsPage;
   public lista2 = Tabs2Page;
   public lista3 = ActivityPage;

@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { SQLStorage } from '../providers/sql-storage';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { MenuPage } from '../pages/menu/menu';
 
@@ -15,6 +17,7 @@ import { NetworkPage } from '../pages/network/network';
 import { ModalNetworkPage } from '../pages/modal-network/modal-network';
 
 import { ActivityPage } from '../pages/activity/activity';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +50,10 @@ import { ActivityPage } from '../pages/activity/activity';
     ModalNetworkPage,
     ActivityPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLStorage,
+    SQLite
+  ]
 })
 export class AppModule {}
