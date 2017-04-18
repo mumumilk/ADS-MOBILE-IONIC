@@ -1,8 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { SQLStorage } from '../providers/sql-storage';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLStorage } from '../providers/sql-storage';
 
 import { MenuPage } from '../pages/menu/menu';
 
@@ -51,9 +51,9 @@ import { ActivityPage } from '../pages/activity/activity';
     ActivityPage
   ],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLite,
     SQLStorage,
-    SQLite
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

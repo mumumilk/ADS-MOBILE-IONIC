@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { SQLStorage } from '../../providers/sql-storage';
+
 /*
   Generated class for the Activity page.
 
@@ -13,7 +15,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ActivityPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db : SQLStorage) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ActivityPage');
