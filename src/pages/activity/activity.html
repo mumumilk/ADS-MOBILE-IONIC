@@ -12,14 +12,25 @@
 
 <ion-content>
   <ion-list>
-      <ion-item>
+      <ion-item *ngFor="let activity of activities">
           <ion-card padding>
-              oi
+            <ion-card-header color="primary">
+                {{ activity.type }}
+            </ion-card-header>
+            <hr>
+            <ion-list>
+                <ion-item>
+                    Descrição
+                </ion-item>
+                <ion-item>
+                    Data
+                </ion-item>
+            </ion-list>
           </ion-card>
       </ion-item>
   </ion-list>
 </ion-content>
 
 <ion-fab right bottom padding>
-  <button ion-fab icon-only><ion-icon name="add"></ion-icon></button>
+  <button ion-fab icon-only (click)="showModal(-1)"><ion-icon name="add"></ion-icon></button>
 </ion-fab>
