@@ -5,8 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-toolbar>
-    <ion-title>oi</ion-title>
+  <ion-toolbar color="light">
+    <ion-title>Nova Atividade
+    </ion-title>
       <ion-buttons end>
           <button icon-button icon-only (click)="close()">
               <ion-icon name="close"></ion-icon>
@@ -17,5 +18,39 @@
 
 
 <ion-content padding>
+  <ion-list>
 
+      <ion-item>
+        <ion-label stacked>Atividade</ion-label>
+        <ion-select [(ngModel)]="activity.type">
+          <ion-option value="1">Prova</ion-option>
+          <ion-option value="2">Trabalho</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="activity.date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Descriçao</ion-label>
+          <ion-textarea [(ngModel)]="activity.description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Conteúdo</ion-label>
+          <ion-textarea [(ngModel)]="activity.content"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Completado</ion-label>
+        <ion-toggle [(ngModel)]="activity.completed" disabled="false"></ion-toggle>
+      </ion-item>
+
+  </ion-list>
 </ion-content>
+
+<ion-fab right bottom padding>
+  <button color="secondary" (click)="save()" ion-fab icon-only><ion-icon name="checkmark"></ion-icon></button>
+</ion-fab>

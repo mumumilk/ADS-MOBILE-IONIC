@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { ModalActivityPage } from '../modal-activity/modal-activity';
 import { SQLStorage } from '../../providers/sql-storage';
 
@@ -16,11 +16,10 @@ import { SQLStorage } from '../../providers/sql-storage';
 export class ActivityPage {
   public activities : Activity[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db : SQLStorage, public modalCtrl : ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db : SQLStorage, public modalCtrl : ModalController, public alertCtrl : AlertController) {
     this.db.create('meu_banco');
 
     this.db.query('CREATE TABLE IF NOT EXISTS activities(id INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT, type INTEGER, date TEXT, content TEXT, completed INTEGER default 0)');
-
 
     this.getActivities();
   }
@@ -36,16 +35,48 @@ export class ActivityPage {
          ac.id = resultado.item(i).id;
          ac.type = resultado.item(i).type;
          ac.date = resultado.item(i).date;
+         ac.description = resultado.item(i).description;
          ac.content = resultado.item(i).content;
          ac.completed = resultado.item(i).completed;
-
+         ac.typeName = Type[ac.type];
          this.activities.push(ac);
        }
     })
   }
 
+  public remove(id){
+    let alert = this.alertCtrl.create({
+      title: 'Remover',
+      message: 'Deseja excluir esse item?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel'
+        },
+        {
+          text: 'Sim',
+          handler: data => {
+             this.removeActivity(id);
+           }
+         }
+      ]
+    });
+
+    alert.present();
+  }
+
+  public removeActivity(id){
+    this.db.query('DELETE FROM activities where id = (?)', [id]);
+    this.getActivities();
+  }
+
   public insertActivity(activity : Activity){
-    this.db.query('INSERT INTO activities (type, date, content, description, completed) VALUES (?,?,?,?,?)', [activity.type, activity.date, activity.date ,activity.content, activity.description ,activity.completed]);
+    this.db.query('INSERT INTO activities (type, date, content, description, completed) VALUES (?,?,?,?,?)', [activity.type, activity.date,activity.content, activity.description ,activity.completed]);
+    this.getActivities();
+  }
+
+  public updateActivity(activity : Activity){
+    this.db.query('UPDATE activities SET type = (?), date = (?), description = (?), completed = (?) WHERE id = (?)', [activity.type, activity.date, activity.date ,activity.content, activity.description ,activity.completed, activity.id]);
     this.getActivities();
   }
 
@@ -56,6 +87,18 @@ export class ActivityPage {
 
   public showModal(id){
     let modalInfo = this.modalCtrl.create(ModalActivityPage, { activity : this.getActivity(id)});
+
+    modalInfo.onDidDismiss(result => {
+      if(result == undefined){
+
+      }
+      else if (result.id == 0) {
+        this.insertActivity(result);
+      }
+      else{
+        this.updateActivity(result);
+      }
+    })
 
     modalInfo.present();
   }
@@ -73,6 +116,7 @@ export class ActivityPage {
            ac.type = resultado.item(i).type;
            ac.date = resultado.item(i).date;
            ac.content = resultado.item(i).content;
+           ac.description = resultado.item(i).description;
            ac.completed = resultado.item(i).completed;
          }
 
@@ -97,9 +141,10 @@ export class Activity{
     public description : string;
     public content : string;
     public completed : boolean;
+    public typeName : string;
 }
 
 export enum Type{
-  Prova,
-  Trabalho
+  Prova = 1,
+  Trabalho = 2
 }

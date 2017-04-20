@@ -15,6 +15,7 @@ import { NetworkPage } from '../pages/network/network';
 import { ModalNetworkPage } from '../pages/modal-network/modal-network';
 
 import { ActivityPage } from '../pages/activity/activity';
+import { ModalActivityPage } from '../pages/modal-activity/modal-activity';
 
 @Component({
   templateUrl: 'app.html'

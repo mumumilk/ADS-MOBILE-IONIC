@@ -17,6 +17,7 @@ import { NetworkPage } from '../pages/network/network';
 import { ModalNetworkPage } from '../pages/modal-network/modal-network';
 
 import { ActivityPage } from '../pages/activity/activity';
+import { ModalActivityPage } from '../pages/modal-activity/modal-activity';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ActivityPage } from '../pages/activity/activity';
     Tabs2Page,
     NetworkPage,
     ModalNetworkPage,
-    ActivityPage
+    ActivityPage,
+    ModalActivityPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -48,7 +50,8 @@ import { ActivityPage } from '../pages/activity/activity';
     Tabs2Page,
     NetworkPage,
     ModalNetworkPage,
-    ActivityPage
+    ActivityPage,
+    ModalActivityPage
   ],
   providers: [
     SQLite,
