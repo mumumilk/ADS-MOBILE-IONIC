@@ -45,7 +45,7 @@ export class ActivityPage {
   }
 
   public remove(id){
-    let alert = this.alertCtrl.create({
+    let alertx = this.alertCtrl.create({
       title: 'Remover',
       message: 'Deseja excluir esse item?',
       buttons: [
@@ -62,7 +62,7 @@ export class ActivityPage {
       ]
     });
 
-    alert.present();
+    alertx.present();
   }
 
   public removeActivity(id){
@@ -76,7 +76,7 @@ export class ActivityPage {
   }
 
   public updateActivity(activity : Activity){
-    this.db.query('UPDATE activities SET type = (?), date = (?), description = (?), completed = (?) WHERE id = (?)', [activity.type, activity.date, activity.date ,activity.content, activity.description ,activity.completed, activity.id]);
+    this.db.query('UPDATE activities SET type = (?), content = (?), date = (?), description = (?), completed = (?) WHERE id = (?)', [activity.type, activity.date, activity.content, activity.description ,activity.completed, activity.id]);
     this.getActivities();
   }
 
@@ -96,6 +96,7 @@ export class ActivityPage {
         this.insertActivity(result);
       }
       else{
+        console.log('ssss');
         this.updateActivity(result);
       }
     })
@@ -142,6 +143,12 @@ export class Activity{
     public content : string;
     public completed : boolean;
     public typeName : string;
+
+    constructor(){
+      this.description = ' ';
+      this.content = ' ';
+      this.date = '2017-01-01';
+    }
 }
 
 export enum Type{

@@ -25,8 +25,9 @@ export class ModalActivityPage {
   }
 
   public save(){
+    console.log(this.activity);
     this.view.dismiss(this.activity);
-    //console.log(this.activity);
+    
   }
 
 }
